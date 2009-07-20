@@ -1,0 +1,29 @@
+name:          xdg-basedir
+version:       0.1
+category:      Data
+synopsis:      A basic implementation of the XDG Base Directory specification.
+
+description:   On Unix platforms, this should be a very straightforward
+               implementation of the XDG Base Directory spec. On Windows,
+               it will attempt to "do the right thing" with regards to
+               choosing appropriate directories.
+
+homepage:      http://github.com/willdonnelly/basedir
+bug-reports:   http://github.com/willdonnelly/basedir/issues
+stability:     alpha
+author:        Will Donnelly
+maintainer:    Will Donnelly <will.donnelly@gmail.com>
+copyright:     (c) 2009 Will Donnelly
+license:       BSD3
+license-file:  LICENSE
+
+build-type:    Simple
+cabal-version: >= 1.2
+
+library
+  exposed-modules: Data.XDG.BaseDir
+  build-depends:   base >= 4 && < 5, regex-compat, directory, filepath
+
+source-repository head
+  type:      git
+  location:  git://github.com/willdonnelly/basedir.git

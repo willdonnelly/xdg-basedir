@@ -1,0 +1,24 @@
+BaseDir - The XDG Base Directory Specification for Haskell
+==========================================================
+
+This library is, on the whole, trivial. But on the other hand, it is
+just complex enough for it to look really ugly when these functions
+have to be recoded time after time for different projects.
+
+All functions in this library take a string representing the name of
+the program, and return one or more filepaths representing a directory.
+
+* getUserDataDir
+* getUserConfigDir
+* getUserCacheDir
+* getSystemDataDirs
+* getSystemConfigDirs
+* getAllDataDirs
+* getAllConfigDirs
+* getWriteableDataDirs
+* getWriteableConfigDirs
+
+The important functions are:
+
+  * getUserDataDir - Get the directory specified by `$XDG_USER_DATA`, defaulting
+                     to "~/.local/share" if none is available.
