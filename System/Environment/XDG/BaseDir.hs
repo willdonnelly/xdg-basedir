@@ -1,6 +1,6 @@
 {-# LANGUAGE CPP #-}
 
-module Data.XDG.BaseDir
+module System.Environment.XDG.BaseDir
     ( getUserDataDir
     , getUserConfigDir
     , getUserCacheDir

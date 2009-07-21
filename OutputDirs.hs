@@ -1,4 +1,4 @@
-import Data.XDG.BaseDir
+import System.Environment.XDG.BaseDir
 
 name = "FooBarApp"
 
