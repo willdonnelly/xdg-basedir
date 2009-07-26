@@ -2,8 +2,11 @@
 
 module System.Environment.XDG.BaseDir
     ( getUserDataDir
+    , getUserDataFile
     , getUserConfigDir
+    , getUserConfigFile
     , getUserCacheDir
+    , getUserCacheFile
     , getSystemDataDirs
     , getSystemConfigDirs
     , getAllDataDirs
@@ -48,6 +51,10 @@ getUserConfigDir    = singleDir "XDG_CONFIG_HOME"
 getUserCacheDir     = singleDir "XDG_CACHE_HOME"
 getSystemDataDirs   = multiDirs "XDG_DATA_DIRS"
 getSystemConfigDirs = multiDirs "XDG_CONFIG_DIRS"
+
+getUserDataFile a f   = fmap (</> f) $ getUserDataDir a
+getUserConfigFile a f = fmap (</> f) $ getUserConfigDir a
+getUserCacheFile a f  = fmap (</> f) $ getUserCacheDir a
 
 singleDir :: String -> String -> IO FilePath
 singleDir key app = envLookup key >>= return . (</> app)
