@@ -1,6 +1,6 @@
 name:          xdg-basedir
-version:       0.1
-category:      Data
+version:       0.2
+category:      System
 synopsis:      A basic implementation of the XDG Base Directory specification.
 
 description:   On Unix platforms, this should be a very straightforward
