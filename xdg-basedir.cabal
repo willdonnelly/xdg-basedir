@@ -5,7 +5,7 @@ synopsis:      A basic implementation of the XDG Base Directory specification.
 
 description:   On Unix platforms, this should be a very straightforward
                implementation of the XDG Base Directory spec. On Windows,
-               it will attempt to "do the right thing" with regards to
+               it will attempt to do the right thing with regards to
                choosing appropriate directories.
 
 homepage:      http://github.com/willdonnelly/xdg-basedir
