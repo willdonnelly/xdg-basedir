@@ -1,5 +1,5 @@
-BaseDir - The XDG Base Directory Specification for Haskell
-==========================================================
+XDG-BaseDir - The XDG Base Directory Specification
+==================================================
 
 This library is, on the whole, trivial. But on the other hand, it is
 just complex enough for it to look really ugly when these functions
