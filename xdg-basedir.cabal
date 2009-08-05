@@ -8,8 +8,8 @@ description:   On Unix platforms, this should be a very straightforward
                it will attempt to "do the right thing" with regards to
                choosing appropriate directories.
 
-homepage:      http://github.com/willdonnelly/basedir
-bug-reports:   http://github.com/willdonnelly/basedir/issues
+homepage:      http://github.com/willdonnelly/xdg-basedir
+bug-reports:   http://github.com/willdonnelly/xdg-basedir/issues
 stability:     alpha
 author:        Will Donnelly
 maintainer:    Will Donnelly <will.donnelly@gmail.com>
@@ -18,7 +18,7 @@ license:       BSD3
 license-file:  LICENSE
 
 build-type:    Simple
-cabal-version: >= 1.2
+cabal-version: >= 1.6
 
 library
   exposed-modules: System.Environment.XDG.BaseDir
@@ -26,4 +26,4 @@ library
 
 source-repository head
   type:      git
-  location:  git://github.com/willdonnelly/basedir.git
+  location:  git://github.com/willdonnelly/xdg-basedir.git
