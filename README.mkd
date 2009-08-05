@@ -8,17 +8,21 @@ have to be recoded time after time for different projects.
 All functions in this library take a string representing the name of
 the program, and return one or more filepaths representing a directory.
 
-* getUserDataDir
-* getUserConfigDir
-* getUserCacheDir
-* getSystemDataDirs
-* getSystemConfigDirs
-* getAllDataDirs
-* getAllConfigDirs
-* getWriteableDataDirs
-* getWriteableConfigDirs
+* `getUserDataDir :: String -> IO FilePath`
+* `getUserDataFile :: String -> String -> IO FilePath`
+* `getUserConfigDir :: String -> IO FilePath`
+* `getUserConfigFile :: String -> String -> IO FilePath`
+* `getUserCacheDir :: String -> IO FilePath`
+* `getUserCacheFile :: String -> String -> IO FilePath`
+* `getSystemDataDirs :: String -> IO [FilePath]`
+* `getSystemDataFiles :: String -> String -> IO [FilePath]`
+* `getSystemConfigDirs :: String -> IO [FilePath]`
+* `getSystemConfigFiles :: String -> String -> IO [FilePath]`
+* `getAllDataDirs :: String -> IO [FilePath]`
+* `getAllDataFiles :: String -> String -> IO [FilePath]`
+* `getAllConfigDirs :: String -> IO [FilePath]`
+* `getAllConfigFiles :: String -> String -> IO [FilePath]`
 
-The important functions are:
-
-  * getUserDataDir - Get the directory specified by `$XDG_USER_DATA`, defaulting
-                     to "~/.local/share" if none is available.
+The 'Dir' and 'Dirs' variants of the functions return a directory or list of
+directories, whereas the 'File' and 'Files' functions are simply convenience
+functions which append a filename to the directories.
