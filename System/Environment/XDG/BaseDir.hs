@@ -18,17 +18,13 @@ module System.Environment.XDG.BaseDir
     ) where
 
 import Data.Maybe         ( fromMaybe )
-import System.FilePath    ( (</>) )
+import System.FilePath    ( (</>), splitSearchPath )
 import System.Environment ( getEnvironment, getEnv )
 import System.IO.Error    ( try )
-import Text.Regex         ( splitRegex, mkRegex, Regex )
 import System.Directory   ( getHomeDirectory )
 import Control.Monad      ( liftM2 )
 
 #if defined(mingw32_HOST_OS) || defined(__MINGW32__)
-
-splitDirs :: String -> [String]
-splitDirs = splitRegex $ mkRegex ";"
 
 getDefault "XDG_DATA_HOME"   = getEnv "AppData"
 getDefault "XDG_CONFIG_HOME" = userRelative $ "Local Settings"
@@ -38,9 +34,6 @@ getDefault "XDG_CONFIG_DIRS" = getEnv "ProgramFiles"
 getDefault _                 = return ""
 
 #else
-
-splitDirs :: String -> [String]
-splitDirs = splitRegex $ mkRegex ":"
 
 getDefault "XDG_DATA_HOME"   = userRelative $ ".local" </> "share"
 getDefault "XDG_CONFIG_HOME" = userRelative $ ".config"
@@ -98,7 +91,7 @@ singleDir :: String -> String -> IO FilePath
 singleDir key app = envLookup key >>= return . (</> app)
 
 multiDirs :: String -> String -> IO [FilePath]
-multiDirs key app = envLookup key >>= return . map (</> app) . splitDirs
+multiDirs key app = envLookup key >>= return . map (</> app) . splitSearchPath
 
 envLookup :: String -> IO String
 envLookup key = do env <- getEnvironment
