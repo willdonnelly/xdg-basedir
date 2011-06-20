@@ -1,5 +1,5 @@
 name:          xdg-basedir
-version:       0.2
+version:       0.2.1
 category:      System
 synopsis:      A basic implementation of the XDG Base Directory specification.
 
@@ -13,7 +13,7 @@ bug-reports:   http://github.com/willdonnelly/xdg-basedir/issues
 stability:     alpha
 author:        Will Donnelly
 maintainer:    Will Donnelly <will.donnelly@gmail.com>
-copyright:     (c) 2009 Will Donnelly
+copyright:     (c) 2011 Will Donnelly
 license:       BSD3
 license-file:  LICENSE
 
