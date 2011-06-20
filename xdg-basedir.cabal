@@ -22,7 +22,7 @@ cabal-version: >= 1.6
 
 library
   exposed-modules: System.Environment.XDG.BaseDir
-  build-depends:   base >= 4 && < 5, regex-compat, directory, filepath
+  build-depends:   base >= 4 && < 5, directory, filepath
 
 source-repository head
   type:      git
