@@ -1,5 +1,5 @@
 name:          xdg-basedir
-version:       0.2.1
+version:       0.2.2
 category:      System
 synopsis:      A basic implementation of the XDG Base Directory specification.
 

@@ -20,7 +20,7 @@ module System.Environment.XDG.BaseDir
 import Data.Maybe         ( fromMaybe )
 import System.FilePath    ( (</>), splitSearchPath )
 import System.Environment ( getEnvironment, getEnv )
-import System.IO.Error    ( try )
+import Control.Exception    ( try )
 import System.Directory   ( getHomeDirectory )
 import Control.Monad      ( liftM2 )
 
