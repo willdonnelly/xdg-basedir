@@ -17,10 +17,9 @@ module System.Environment.XDG.BaseDir
     , getAllConfigFiles
     ) where
 
-import Data.Maybe         ( fromMaybe )
 import System.FilePath    ( (</>), splitSearchPath )
-import System.Environment ( getEnvironment, getEnv )
-import Control.Exception    ( try )
+import System.Environment ( getEnvironment )
+import Control.Exception  ( IOException, try )
 import System.Directory   ( getHomeDirectory )
 import Control.Monad      ( liftM2 )
 
@@ -61,10 +60,10 @@ getSystemConfigDirs :: String -> IO [FilePath]
 getSystemConfigDirs = multiDirs "XDG_CONFIG_DIRS"
 -- | Get a list of all data directories.
 getAllDataDirs      :: String -> IO [FilePath]
-getAllDataDirs a    = liftM2 (:) (getUserDataDir a) (getSystemDataDirs a)
+getAllDataDirs a    = liftM2 (++) (possibleSingleDir "XDG_DATA_HOME" a) (getSystemDataDirs a)
 -- | Get a list of all configuration directories.
 getAllConfigDirs    :: String -> IO [FilePath]
-getAllConfigDirs a  = liftM2 (:) (getUserConfigDir a) (getSystemConfigDirs a)
+getAllConfigDirs a  = liftM2 (++) (possibleSingleDir "XDG_CONFIG_HOME" a) (getSystemConfigDirs a)
 -- | Get the path to a specific user data file.
 getUserDataFile          :: String -> String -> IO FilePath
 getUserDataFile a f      = fmap (</> f) $ getUserDataDir a
@@ -86,6 +85,12 @@ getAllDataFiles a f      = fmap (map (</> f)) $ getAllDataDirs a
 -- | Get a list of all paths for a specific configuration file.
 getAllConfigFiles        :: String -> String -> IO [FilePath]
 getAllConfigFiles a f    = fmap (map (</> f)) $ getAllConfigDirs a
+
+possibleSingleDir :: String -> String -> IO [FilePath]
+possibleSingleDir key app = fmap ignoreIOEx . try $ singleDir key app where
+    ignoreIOEx :: Either IOException FilePath -> [FilePath]
+    ignoreIOEx (Left  _) = []
+    ignoreIOEx (Right d) = [d]
 
 singleDir :: String -> String -> IO FilePath
 singleDir key app = envLookup key >>= return . (</> app)
