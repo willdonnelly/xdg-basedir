@@ -17,9 +17,8 @@ module System.Environment.XDG.BaseDir
     , getAllConfigFiles
     ) where
 
-import Data.Maybe         ( fromMaybe )
 import System.FilePath    ( (</>), splitSearchPath )
-import System.Environment ( getEnvironment, getEnv )
+import System.Environment ( getEnvironment )
 import Control.Exception  ( IOException, try )
 import System.Directory   ( getHomeDirectory )
 import Control.Monad      ( liftM2 )
